@@ -1,6 +1,8 @@
 const express= require('express');
 const app= express();
 const mysql= require('mysql');
+
+
 const bodyParser= require("body-parser");
 
 
@@ -23,8 +25,16 @@ con.connect(function(error){
 });
 
 app.use(cors());
-app.use(express.json);
-app.use(express.urlencoded({ extended: true }))
+
+
+
+
+
+app.get('/get',(req,res)=>{ res.send("hi");
+});
+
+
+
 
 
 app.get('/api/get', (req, res)=> 
@@ -43,6 +53,10 @@ app.get('/api/get', (req, res)=>
         })
       })
 });
+
+
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.post('/api/insert',(req,res) => {
 
